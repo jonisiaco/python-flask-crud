@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+		<title>{{ data.title }}</title>
+</head>
+<body>
+	<h1>News</h1>
+	<h2>{{ data.title }}</h2>
+	<content>
+		<article>
+			{{ data.content }}
+			<p>
+				Last modification: {{data.updated_at}}<br />
+				Created At: {{data.updated_at}}
+			</p>
+		</article>
+	</content>
+</body>
+</html>

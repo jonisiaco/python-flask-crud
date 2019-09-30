@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sign In</title>
+</head>
+<body>
+	<fieldset>
+		<legend>Only Members</legend>
+		<form action="" autocomplete="off" method="POST">
+			<p>
+				{{ form.username.label }}<br>
+				{{ form.username(size=32) }}
+			</p>
+			<p>
+				{{ form.password.label }}<br>
+				{{ form.password(size=32) }}
+			</p>
+			<p>
+				{{ form.remember_me() }} {{ form.remember_me.label }}
+			</p>
+			<p>
+				{{ form.csrf_token }}
+				{{ form.submit() }}
+			</p>
+		</form>
+	</fieldset>
+
+</body>
+</html>
