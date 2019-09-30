@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+		<title>{{ data.title }}</title>
+</head>
+<body>
+	<h1>Edit "{{ data.id }}"</h1>
+	<h2>{{ data.title }}</h2>
+	<fieldset>
+		<legend>Only Members</legend>
+		<form action="" autocomplete="off" method="POST">
+			<p>
+				{{ form.title.label }}<br>
+				{{ form.title(value=data.title) }}
+			</p>
+			<p>
+				{{ form.content.label }}<br>
+				<textarea name="content">{{data.content}}</textarea>
+			</p>
+			<p>
+				{{ form.id(value=data.id) }}
+				{{ form.csrf_token }}
+				{{ form.submit() }}
+			</p>
+			<p>
+				Last update: {{data.updated_at}}<br />
+				Created At: {{data.updated_at}}
+			</p>
+		</form>
+	</fieldset>
+</body>
+</html>

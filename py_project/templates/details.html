@@ -9,12 +9,15 @@
 	<h2>{{ data.title }}</h2>
 	<content>
 		<article>
-			{{ data.content }}
+			{{ data.content|safe }}
 			<p>
 				Last modification: {{data.updated_at}}<br />
 				Created At: {{data.updated_at}}
 			</p>
 		</article>
+		<a href="/news/edit/{{id}}">Edit</a> <br />
+		<a href="/news/delete/{{id}}">Delete</a>
+
 	</content>
 </body>
 </html>

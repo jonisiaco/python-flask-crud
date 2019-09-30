@@ -23,12 +23,18 @@ class Mysql(object):
         self.__password = password
         self.__database = database
 
-    def _open(self, prepared=True, dictionary=False, buffered=True):
+    def _open(self, dictionary = False):
         try:
             cnx = mysql.connector.connect(host=self.__host, user=self.__user, password=self.__password,
                                           database=self.__database)
             self.__connection = cnx
-            self.__session = cnx.cursor( dictionary=dictionary, buffered=buffered )
+
+            if dictionary:
+                self.__session = cnx.cursor( dictionary=True, buffered=True )
+            else:    
+                self.__session = cnx.cursor( prepared=True )
+
+            return self.__session
 
         except mysql.connector.Error as err:
             if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
@@ -38,8 +44,10 @@ class Mysql(object):
             else:
                 print err
 
-        return self.__session
-
     def _close(self):
         self.__session.close()
         self.__connection.close()
+
+    def _commit(self):
+        self.__connection.commit()
+
